@@ -1,0 +1,6 @@
+# Ignore local environment file containing secrets
+.env
+
+# Ignore sensitive files
+acme.json
+httpauth
