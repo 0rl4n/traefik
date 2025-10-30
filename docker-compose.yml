@@ -4,7 +4,7 @@ networks:
 
 services:
   traefik:
-    image: traefik:latest
+    image: ${TRAEFIK_IMAGE:-traefik:latest}
     container_name: traefik
     restart: always
     ports:

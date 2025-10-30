@@ -65,6 +65,7 @@ All user-specific configuration is managed in the `.env` file.
 | `TRAEFIK_DOMAIN` | The domain/subdomain for the Traefik dashboard. | `traefik.your-domain.com` |
 | `LETSENCRYPT_EMAIL` | The email address for Let's Encrypt registration. | `your-email@example.com` |
 | `PROJECT_PATH` | **Required.** Absolute path to this project directory. | `/root/services/traefik` |
+| `LETSENCRYPT_ACME_TOS` | Accept Let’s Encrypt ToS (1/0). | `1` |
 
 ## Maintenance
 
@@ -78,6 +79,9 @@ docker compose up -d
 The following files are critical and contain sensitive data. They should be backed up securely:
 -   `./acme.json` (Your SSL certificates)
 -   `./httpauth` (Your dashboard credentials)
+
+Optional:
+-   Use `TRAEFIK_IMAGE` in `.env` to pin a specific Traefik version. The compose file supports `${TRAEFIK_IMAGE:-traefik:latest}`.
 
 ### Troubleshooting
 To view the logs for the service:

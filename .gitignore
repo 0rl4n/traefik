@@ -1,3 +1,6 @@
+.env
+acme.json
+httpauth
 # Ignore local environment file containing secrets
 .env
 
