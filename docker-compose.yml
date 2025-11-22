@@ -15,6 +15,7 @@ services:
       - ${PROJECT_PATH}/traefik.yml:/traefik.yml:ro
       - ${PROJECT_PATH}/acme.json:/acme.json
       - ${PROJECT_PATH}/httpauth:/etc/traefik/httpauth:ro
+      - ${PROJECT_PATH}/stream_auth:/etc/traefik/stream_auth:ro
     environment:
       - LETSENCRYPT_ACME_TOS=1
     env_file:
@@ -48,3 +49,5 @@ services:
       - "traefik.http.routers.traefik.middlewares=auth"
       # Middleware using the httpauth
       - "traefik.http.middlewares.auth.basicauth.usersfile=/etc/traefik/httpauth"
+      # Middleware using the stream_auth
+      - "traefik.http.middlewares.stream-auth.basicauth.usersfile=/etc/traefik/stream_auth"
