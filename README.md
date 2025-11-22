@@ -81,7 +81,16 @@ The following files are critical and contain sensitive data. They should be back
 -   `./httpauth` (Your dashboard credentials)
 
 Optional:
--   Use `TRAEFIK_IMAGE` in `.env` to pin a specific Traefik version. The compose file supports `${TRAEFIK_IMAGE:-traefik:latest}`.
+-   Use `TRAEFIK_IMAGE` in `.env` to pin a specific Traefik version. The compose file defaults to `traefik:v3.2`.
+
+## Security Hardening
+
+This service is configured with the following security measures:
+- **Capability Dropping**: All capabilities dropped except `NET_BIND_SERVICE` (required for binding to ports 80/443)
+- **No New Privileges**: Prevents privilege escalation
+- **Logging Limits**: Log rotation configured (10MB max-size, 3 files) to prevent disk space exhaustion
+- **Version Pinning**: Image version pinned to `v3.2` (override via `TRAEFIK_IMAGE` in `.env`)
+- **Health Checks**: Health monitoring via `/ping` endpoint
 
 ### Troubleshooting
 To view the logs for the service:
