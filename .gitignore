@@ -1,9 +1,7 @@
-.env
-acme.json
-httpauth
 # Ignore local environment file containing secrets
 .env
 
 # Ignore sensitive files
 acme.json
 httpauth
+stream_auth

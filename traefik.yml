@@ -23,3 +23,19 @@ certificatesResolvers:
 
 api:
   dashboard: true
+  insecure: false
+
+metrics:
+  prometheus:
+    addEntryPointsLabels: true
+    addServicesLabels: true
+    addRoutersLabels: true
+
+log:
+  level: INFO
+  format: json
+
+accessLog:
+  filters:
+    minDuration: 100ms
+    retryAttempts: true

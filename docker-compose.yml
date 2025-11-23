@@ -1,6 +1,8 @@
 networks:
   proxy:
     external: true
+  monitoring:
+    external: true
 
 services:
   traefik:
@@ -22,6 +24,7 @@ services:
       - .env
     networks:
       - proxy
+      - monitoring
     logging:
       driver: json-file
       options:
@@ -34,11 +37,11 @@ services:
     security_opt:
       - no-new-privileges:true
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/ping"]
+      test: ["CMD", "sh", "-c", "pgrep traefik > /dev/null"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
+      start_period: 10s
     labels:
       - "traefik.enable=true"
       # Dashboard specific labels
